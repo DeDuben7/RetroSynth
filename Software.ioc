@@ -1,6 +1,6 @@
 #MicroXplorer Configuration settings - do not modify
-CAD.formats=
-CAD.pinconfig=
+CAD.formats=[]
+CAD.pinconfig=Project naming
 CAD.provider=
 File.Version=6
 GPIO.groupedBy=
@@ -191,9 +191,9 @@ ProjectManager.ProjectName=Software
 ProjectManager.ProjectStructure=
 ProjectManager.RegisterCallBack=
 ProjectManager.StackSize=0x400
-ProjectManager.TargetToolchain=STM32CubeIDE
+ProjectManager.TargetToolchain=MDK-ARM V5.32
 ProjectManager.ToolChainLocation=
-ProjectManager.UnderRoot=true
+ProjectManager.UnderRoot=false
 ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-SystemClock_Config-RCC-false-HAL-false,3-MX_USART1_UART_Init-USART1-false-HAL-true,4-MX_USART2_UART_Init-USART2-false-HAL-true
 RCC.ADCFreqValue=36000000
 RCC.AHBFreq_Value=72000000

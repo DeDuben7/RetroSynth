@@ -18,11 +18,12 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-//#include "main.h"
+#include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "includes.h"
+//#include "includes.h"
+#include "YM3812.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -351,63 +352,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
+/* USER CODE BEGIN 4 */
 
-/**
-  * @fn			void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-  * @brief		UART callback function.
-  * @details	This function is called by the UART interrupt handler and
-  * 			sets the receive flag.
-  */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if (huart->Instance == USART1)
-	{
-		if(data1 <= 144)
-		{
-			midi_buffer[midi_buffer_index++] = data1;
-
-			if(midi_buffer_index > (MIDI_BUFFER_SIZE - 1))
-			{
-				midi_buffer_index = 0;
-			}
-		}
-
-		HAL_UART_Receive_IT(&huart1, &data1, 1); // enable receive under interrupt mode again
-	}
-
-	if (huart->Instance == USART2)
-	{
-		ReceiveFlag = 2;						// set the receiveflag
-		HAL_UART_Receive_IT(&huart2, &data2, 1); // enable receive under interrupt mode again
-	}
-}
-
-/**
- *@mainpage 				RETROSYNTH
- * @section intro_sec		Introduction
- *							This Doxygen is for the people who want to recreate the RETROSYNTH.
- *							The doxygen is dedicated to explain the software. The software contains extra documantation.
- *							For understanding the code, it is recommendend to have a basic know how of MIDI and SPI.
- *							For hardware, please see the Hardware documentation.
- *
- *							Good luck on recreating!
- *
- *							Regards,
- *
- *							Oehlers, van Renswoude and Schotborgh
- */
-/**
- * @defgroup 	MIDI MIDI-software
- * 				This is all the software for capturing MIDI-messages and filtering them by function.
- */
-/**
- * @defgroup	YM	YM-Software
- * 				This is all the software to convert incoming MIDI-messages, from the midi software, into YM-protocol.
- */
-/**
- * @defgroup	SPI	SPI-Software
- * 				This is all the software needed to communicate via SPI. The SPI is used for communication with the I/O-expander, that is used for the User Interface.
- */
 /* USER CODE END 4 */
 
 /**

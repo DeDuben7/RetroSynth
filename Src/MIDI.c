@@ -41,7 +41,7 @@ uint8_t NOTE_PITCH_CHANGE_FLAG;	/**< value made for flagging pitch change */
   */
 uint8_t MIDI_PROC(uint8_t MIDI_MSG)
 {
-	uint8_t iError;
+	uint8_t iError = 0;
 
 	if(MIDI_MSG & 128) // Check if this is the first byte of a message
 	{
