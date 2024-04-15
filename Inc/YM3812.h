@@ -7,11 +7,51 @@
 #ifndef YM3812_H_
 #define YM3812_H_
 
-#include "includes.h"
+#include <stdint.h>
 
 
-#define ON 	1	/**< Defines On 	to 	1 */
-#define OFF 0	/**< Defines Off to 	0 */
+
+#define NO_CHIP_SELECT 0x01
+
+/**< structure for storing the effect settings of each chip channel */
+typedef struct {
+	uint8_t Waveform;
+	uint8_t AM;
+	uint8_t Vibrato;
+	uint8_t Pedal_Sustain;
+	uint8_t ModFreqMult;
+	uint8_t Volume;
+	uint8_t Attack;
+	uint8_t Decay;
+	uint8_t Sustain;
+	uint8_t Release;
+	uint8_t KSR;
+	uint8_t ScalingLevel;
+} Operator;
+
+/**< Structure for storing the data of each voice channel */
+typedef struct {
+	uint8_t Enable;
+	uint8_t KEY_Numb;
+	uint16_t F_Numb;
+	uint8_t Octave;
+	uint8_t Velocity;
+	uint8_t i_tel;
+} pVCH;
+
+/**< structure for storing the effect settings of each operator */
+typedef struct {
+	uint8_t AM_Depth;
+	uint8_t Vib_Depth;
+	uint8_t Feedback;
+	uint8_t ModulatieMode;
+
+	Operator OP1;
+	Operator OP2;
+} *pCCH;
+
+
+extern pCCH CCH[4];		/**< four variables for the effects settings structs of each chip channel */
 
 //Function declarations for the YM3812
 uint8_t YM_WRITE_Databus(uint8_t chips, uint8_t adress, uint8_t data);

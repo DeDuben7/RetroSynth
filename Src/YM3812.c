@@ -14,8 +14,9 @@
  * @{
  */
 
-
-#include "includes.h"
+#include "YM3812.h"
+#include "gpio.h"
+#include "global.h"
 
 // Arrays with the different numbers for the operator addresses
 uint8_t op1[9] = {0,1,2,8,9,10,16,17,18}; /**< Array with addresses for the first YM operators */

@@ -14,7 +14,7 @@
  * @addtogroup	YM
  * @{
  */
-
+#if 0
 #include "includes.h"
 
 uint8_t buf[2];
@@ -102,4 +102,4 @@ void UI_Proc(uint8_t data)
     }
 }
 
-
+#endif

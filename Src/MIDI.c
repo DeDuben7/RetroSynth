@@ -17,7 +17,14 @@
  * @addtogroup MIDI
  * @{
  */
-#include "includes.h"
+
+#include "MIDI.h"
+
+
+#define MIDI_BUFFER_SIZE 100
+volatile char midi_buffer[MIDI_BUFFER_SIZE];
+volatile uint8_t midi_buffer_index = 0;
+uint8_t midi_cnt = 0;
 
 uint8_t i = 0;  			/**< integer for counting incoming bytes.*/
 uint8_t DATA[2]; 		/**< Data array for saving incoming data bytes from MIDI messages.*/
@@ -30,6 +37,7 @@ uint8_t NOTE_OFF_FLAG;			/**< value made for flagging note off*/
 uint8_t NOTE_PROG_CHANGE_FLAG;	/**< value made for flagging program change*/
 uint8_t NOTE_CONT_CHANGE_FLAG;	/**< value made for flagging control change*/
 uint8_t NOTE_PITCH_CHANGE_FLAG;	/**< value made for flagging pitch change */
+
 
 /**
   * @fn				uint8_t MIDI_PROC(uint8_t MIDI_MSG)

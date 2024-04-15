@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -405,11 +405,6 @@
               <FilePath>../Src/stm32f1xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f1xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/stm32f1xx_hal_msp.c</FilePath>
-            </File>
-            <File>
               <FileName>MIDI.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\MIDI.c</FilePath>
@@ -428,6 +423,36 @@
               <FileName>YM3812.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\YM3812.c</FilePath>
+            </File>
+            <File>
+              <FileName>initialization.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\initialization.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\template.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>system_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\system_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\RetroSynth Keil\Src\stm32f1xx_hal_msp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -520,11 +545,6 @@
           <GroupName>Application/User/Inc</GroupName>
           <Files>
             <File>
-              <FileName>includes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\includes.h</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\main.h</FilePath>
@@ -558,6 +578,36 @@
               <FileName>YM3812.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\YM3812.h</FilePath>
+            </File>
+            <File>
+              <FileName>initialization.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\initialization.h</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>template.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\template.h</FilePath>
+            </File>
+            <File>
+              <FileName>uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>system_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\system_clock.h</FilePath>
+            </File>
+            <File>
+              <FileName>global.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\global.h</FilePath>
             </File>
           </Files>
         </Group>
