@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>Inc;Drivers/STM32F1xx_HAL_Driver/Inc;Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;Drivers/CMSIS/Device/ST/STM32F1xx/Include;Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -392,67 +392,67 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/User</GroupName>
+          <GroupName>Application/Src</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/main.c</FilePath>
+              <FilePath>Src/main.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/stm32f1xx_it.c</FilePath>
+              <FilePath>Src/stm32f1xx_it.c</FilePath>
             </File>
             <File>
               <FileName>MIDI.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\MIDI.c</FilePath>
+              <FilePath>Src/MIDI.c</FilePath>
             </File>
             <File>
               <FileName>MIDI_test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\MIDI_test.c</FilePath>
+              <FilePath>Src/MIDI_test.c</FilePath>
             </File>
             <File>
               <FileName>UI.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\UI.c</FilePath>
+              <FilePath>Src/UI.c</FilePath>
             </File>
             <File>
               <FileName>YM3812.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\YM3812.c</FilePath>
+              <FilePath>Src/YM3812.c</FilePath>
             </File>
             <File>
               <FileName>initialization.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\initialization.c</FilePath>
+              <FilePath>Src/initialization.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\gpio.c</FilePath>
+              <FilePath>Src/gpio.c</FilePath>
             </File>
             <File>
               <FileName>template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\template.c</FilePath>
+              <FilePath>Src/template.c</FilePath>
             </File>
             <File>
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\uart.c</FilePath>
+              <FilePath>Src/uart.c</FilePath>
             </File>
             <File>
               <FileName>system_clock.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\system_clock.c</FilePath>
+              <FilePath>Src/system_clock.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_msp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\RetroSynth Keil\Src\stm32f1xx_hal_msp.c</FilePath>
+              <FilePath>Src/stm32f1xx_hal_msp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -462,72 +462,72 @@
             <File>
               <FileName>stm32f1xx_hal_gpio_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_tim_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_rcc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_cortex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_flash_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c</FilePath>
+              <FilePath>Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -537,77 +537,77 @@
             <File>
               <FileName>system_stm32f1xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/system_stm32f1xx.c</FilePath>
+              <FilePath>Src/system_stm32f1xx.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/User/Inc</GroupName>
+          <GroupName>Application/Inc</GroupName>
           <Files>
             <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\main.h</FilePath>
+              <FilePath>Inc/main.h</FilePath>
             </File>
             <File>
               <FileName>MIDI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\MIDI.h</FilePath>
+              <FilePath>Inc/MIDI.h</FilePath>
             </File>
             <File>
               <FileName>MIDI_test.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\MIDI_test.h</FilePath>
+              <FilePath>Inc/MIDI_test.h</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_conf.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\stm32f1xx_hal_conf.h</FilePath>
+              <FilePath>Inc/stm32f1xx_hal_conf.h</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_it.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\stm32f1xx_it.h</FilePath>
+              <FilePath>Inc/stm32f1xx_it.h</FilePath>
             </File>
             <File>
               <FileName>UI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\UI.h</FilePath>
+              <FilePath>Inc/UI.h</FilePath>
             </File>
             <File>
               <FileName>YM3812.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\YM3812.h</FilePath>
+              <FilePath>Inc/YM3812.h</FilePath>
             </File>
             <File>
               <FileName>initialization.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\initialization.h</FilePath>
+              <FilePath>Inc/initialization.h</FilePath>
             </File>
             <File>
               <FileName>gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\gpio.h</FilePath>
+              <FilePath>Inc/gpio.h</FilePath>
             </File>
             <File>
               <FileName>template.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\template.h</FilePath>
+              <FilePath>Inc/template.h</FilePath>
             </File>
             <File>
               <FileName>uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\uart.h</FilePath>
+              <FilePath>Inc/uart.h</FilePath>
             </File>
             <File>
               <FileName>system_clock.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\system_clock.h</FilePath>
+              <FilePath>Inc/system_clock.h</FilePath>
             </File>
             <File>
               <FileName>global.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Inc\global.h</FilePath>
+              <FilePath>Inc/global.h</FilePath>
             </File>
           </Files>
         </Group>
