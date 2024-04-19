@@ -12,107 +12,56 @@
   ******************************************************************************
 */
 
+#include <stdint.h>
+
 #include "gpio.h"
 
-uint8_t i1 = 0;
 uint8_t KEYS[9] = {0,0,0,0,0,0,0,0,0};
 
-void control_leds(int data, int stat)
-{
-  if(stat == 1)
-  {
-	for(int t = 0;t<9;t++)
-	{
+int pins[9] = {
+	GPIO_PIN_0,
+	GPIO_PIN_1,
+	GPIO_PIN_4,
+	GPIO_PIN_5,
+	GPIO_PIN_6,
+	GPIO_PIN_7,
+	GPIO_PIN_8,
+	GPIO_PIN_11,
+	GPIO_PIN_12
+};
 
-	  if(KEYS[t] == data)
-	  {
-		return;
-	  }
-
-	  else if(KEYS[t] == 0)
-	  {
-		KEYS[t] = data;
-
-		switch(t)
-		{
-		  case 0:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
-			break;
-		  case 1:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_SET);
-			break;
-		  case 2:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
-			break;
-		  case 3:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
-			break;
-		  case 4:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_SET);
-			break;
-		  case 5:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET);
-			break;
-		  case 6:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,GPIO_PIN_SET);
-			break;
-		  case 7:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_SET);
-			break;
-		  case 8:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_SET);
-			break;
-		  default:
-			break;
+void control_leds(uint8_t key, uint8_t vel) {
+  if(vel != 0) { // note on
+		for(uint8_t t = 0;t<9;++t) {
+			if(KEYS[t] == key) {
+				return;
+			} else if(KEYS[t] == 0) {
+				KEYS[t] = key;
+				break;
+			}
 		}
-		return;
-	  }
-	}
-  }
-
-  else if(stat == 0)
-  {
-	 for(uint8_t t = 0;t<9;t++)
-	 {
-		if(KEYS[t] == data)
-		{
+  } else { // note off
+	  for(uint8_t t = 0;t<9;++t) {
+			if(KEYS[t] == key) {
 	      KEYS[t] = 0;
-
-	      switch(t)
-		  {
-			case 0:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
-			  break;
-			case 1:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
-			  break;
-			case 2:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
-			  break;
-			case 3:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-			  break;
-			case 4:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_RESET);
-			  break;
-			case 5:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
-			  break;
-			case 6:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,GPIO_PIN_RESET);
-			  break;
-			case 7:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_RESET);
-			  break;
-			case 8:
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_RESET);
-			  break;
-			default:
-			  break;
-		  }
-
-	      return;
-		}
-      }
+			}
+    }
   }
+
+	int key_count = 0;
+	for(uint8_t t = 0;t<9;++t) {
+		if(KEYS[t] != 0) {
+			key_count += 1;
+		}
+	}
+
+	for(uint8_t t = 0; t < key_count; ++t) {
+    HAL_GPIO_WritePin(GPIOA, pins[t], GPIO_PIN_SET);
+	}
+
+	for(uint8_t t = key_count; t < 9; ++t) {
+			HAL_GPIO_WritePin(GPIOA, pins[t], GPIO_PIN_RESET);
+	}
+
+	return;
 }

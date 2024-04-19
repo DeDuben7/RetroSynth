@@ -405,14 +405,14 @@
               <FilePath>Src/stm32f1xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>MIDI.c</FileName>
+              <FileName>midi_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>Src/MIDI.c</FilePath>
+              <FilePath>Src/midi_in.c</FilePath>
             </File>
             <File>
-              <FileName>MIDI_test.c</FileName>
+              <FileName>midi_test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>Src/MIDI_test.c</FilePath>
+              <FilePath>Src/midi_test.c</FilePath>
             </File>
             <File>
               <FileName>UI.c</FileName>
@@ -420,9 +420,9 @@
               <FilePath>Src/UI.c</FilePath>
             </File>
             <File>
-              <FileName>YM3812.c</FileName>
+              <FileName>ym3812_hal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>Src/YM3812.c</FilePath>
+              <FilePath>Src/ym3812_hal.c</FilePath>
             </File>
             <File>
               <FileName>initialization.c</FileName>
@@ -550,14 +550,14 @@
               <FilePath>Inc/main.h</FilePath>
             </File>
             <File>
-              <FileName>MIDI.h</FileName>
+              <FileName>midi_in.h</FileName>
               <FileType>5</FileType>
-              <FilePath>Inc/MIDI.h</FilePath>
+              <FilePath>Inc/midi_in.h</FilePath>
             </File>
             <File>
-              <FileName>MIDI_test.h</FileName>
+              <FileName>midi_test.h</FileName>
               <FileType>5</FileType>
-              <FilePath>Inc/MIDI_test.h</FilePath>
+              <FilePath>Inc/midi_test.h</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_conf.h</FileName>
@@ -575,9 +575,9 @@
               <FilePath>Inc/UI.h</FilePath>
             </File>
             <File>
-              <FileName>YM3812.h</FileName>
+              <FileName>ym3812_hal.h</FileName>
               <FileType>5</FileType>
-              <FilePath>Inc/YM3812.h</FilePath>
+              <FilePath>Inc/ym3812_hal.h</FilePath>
             </File>
             <File>
               <FileName>initialization.h</FileName>

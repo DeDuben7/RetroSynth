@@ -18,6 +18,7 @@
 #include "uart.h"
 #include "initialization.h"
 #include "gpio.h"
+#include "midi_in.h"
 
 /* Defines -------------------------------------------------------------------*/
 
@@ -38,28 +39,8 @@ int main(void)
 	initialize_synth();
 	
   /* Infinite loop */
-	while (1)
-	{
-		// if(midi_cnt != midi_buffer_index)
-		// {
-		// 	MIDI_PROC(midi_buffer[midi_cnt++]);
-
-		// 	if(midi_cnt > (MIDI_BUFFER_SIZE - 1))
-		// 	{
-		// 		midi_cnt = 0;
-		// 	}
-
-		// 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_SET);
-		// }
-
-		// else
-		// {
-		// 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_RESET);
-		// }
-
-			//ReceiveFlag = 0;
-			//UI_Proc(data2);
-		//HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+	while (1) {
+		parse_midi_messages_task();
 	}
 }
 
