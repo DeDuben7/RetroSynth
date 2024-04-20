@@ -43,6 +43,8 @@ static void display_uart_deinit(void);
   */
 void midi_uart_init()
 {
+	__USART1_CLK_ENABLE();
+	
   midi_uart_handle.Instance = USART1;
   midi_uart_handle.Init.BaudRate = 31250;
   midi_uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
@@ -68,6 +70,8 @@ void midi_uart_init()
   */
 void display_uart_init()
 {
+	__USART2_CLK_ENABLE();
+	
   display_uart_handle.Instance = USART2;
   display_uart_handle.Init.BaudRate = 9600;
   display_uart_handle.Init.WordLength = UART_WORDLENGTH_8B;

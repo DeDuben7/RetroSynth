@@ -34,7 +34,7 @@ uint16_t midi_buffer_tail = 0;
 
 void midi_buffer_add_data(uint8_t data) {
 	midi_buffer[midi_buffer_head++] = data; 
-
+	
 	if(midi_buffer_head >= MIDI_BUFFER_SIZE) { 
 		midi_buffer_head = 0; 
 	}
@@ -44,6 +44,10 @@ static bool is_command_byte(uint8_t byte) {
     return (0xF0 & byte) >> 7;
 }
 
+static bool is_common_command_byte(uint8_t byte) {
+	return (byte & 0xf0) == 0xf0;
+}
+
 void parse_midi_messages_task(void) {
   static uint8_t command_type = 0;
   static uint8_t expected_length = 0;
@@ -51,45 +55,43 @@ void parse_midi_messages_task(void) {
   static uint8_t data[2];
 
   while(midi_buffer_tail != midi_buffer_head) {
-		uint8_t byte = midi_buffer[midi_buffer_tail++];;
+		uint8_t byte = midi_buffer[midi_buffer_tail];
 		
-    if(midi_buffer_tail >= MIDI_BUFFER_SIZE) {
-      midi_buffer_tail = 0;
-    }
-		
-		if (is_command_byte(byte) && byte != MIDI_CMD_SYSEX_END) {
-			command_type = byte & 0xf0;
+		if (is_command_byte(byte) && byte != MIDI_CMD_COMMON_SYSEX_END) { // sysex end is not a start of a message
+			if(is_common_command_byte(byte)) {
+				
+			} else {
+				command_type = byte & 0xf0;
+				current_lenght = 0;
 
-      switch (command_type) {
-        case MIDI_CMD_NOTE_OFF:
-        case MIDI_CMD_NOTE_ON:
-        case MIDI_CMD_KEY_PRESSURE:
-        case MIDI_CMD_CONTROL_CHANGE:
-        case MIDI_CMD_PITCH_BEND:
-        case MIDI_CMD_MTC_QUARTER:
-          expected_length = 2;
-          break;
-          
-        case MIDI_CMD_PROGRAM_CHANGE:
-        case MIDI_CMD_CHANNEL_PRESSURE:
-        case MIDI_CMD_SONG_POSITION:
-          expected_length = 1;
-          break;
-          
-        default:
-          expected_length = 0;
-          break;
-      }
+				switch (command_type) {
+					case MIDI_CMD_NOTE_OFF:
+					case MIDI_CMD_NOTE_ON:
+					case MIDI_CMD_KEY_PRESSURE:
+					case MIDI_CMD_CONTROL_CHANGE:
+					case MIDI_CMD_PITCH_BEND:
+						expected_length = 2;
+						break;
+						
+					case MIDI_CMD_PROGRAM_CHANGE:
+					case MIDI_CMD_CHANNEL_PRESSURE:
+						expected_length = 1;
+						break;
+						
+					default:
+						//don't write the expected lenght
+						break;
+				}
+			}
 		} else if (expected_length > 0) {
-			if(current_lenght != expected_length) {
-        data[current_lenght++] = byte;
-      }
+
+			data[current_lenght++] = byte;
 
       if(current_lenght == expected_length) {
         switch(command_type) {
           case MIDI_CMD_NOTE_OFF:
           case MIDI_CMD_NOTE_ON:
-            //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
             control_leds(data[0], data[1]);
             break;
           case MIDI_CMD_PITCH_BEND:
@@ -101,9 +103,15 @@ void parse_midi_messages_task(void) {
         }
 
         current_lenght = 0;
-        expected_length = 0;
+				data[0] = 0;
+				data[1] = 0;
         // do not reset command type here, so this can be used if messages are received in a sequence
       }
+    }
+		
+		midi_buffer_tail += 1;
+		if(midi_buffer_tail >= MIDI_BUFFER_SIZE) {
+      midi_buffer_tail = 0;
     }
   }
 }
