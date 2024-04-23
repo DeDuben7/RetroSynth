@@ -17,6 +17,7 @@
 #include "uart.h"
 #include "system_clock.h"
 #include "ym3812_hal.h"
+#include "us_timer.h"
 
 /* Defines -------------------------------------------------------------------*/
 
@@ -36,6 +37,8 @@ void initialize_synth() {
 
   /* Initialize all configured peripherals */
   init_gpio();
+	
+	us_timer_init();
 	
   midi_uart_init();
 

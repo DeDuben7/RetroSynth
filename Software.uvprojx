@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -453,6 +453,11 @@
               <FileName>stm32f1xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>Src/stm32f1xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>us_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\us_timer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -608,6 +613,11 @@
               <FileName>global.h</FileName>
               <FileType>5</FileType>
               <FilePath>Inc/global.h</FilePath>
+            </File>
+            <File>
+              <FileName>us_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\us_timer.h</FilePath>
             </File>
           </Files>
         </Group>
