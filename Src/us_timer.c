@@ -74,8 +74,7 @@ void us_delay(uint32_t us) {
 	// Calculate the number of complete timer overflows
 	uint32_t overflows = ticks / 0xFFFF;
 	// Calculate the remaining ticks after complete overflows
-	uint32_t remainder = ticks % 0xFFFF;
-
+	uint32_t remainder = (ticks % 0xFFFF) - 1; // the -1 is as compensation for the time code execution takes
 	// Reset the counter
 	__HAL_TIM_SET_COUNTER(&us_timer_handle, 0);
 

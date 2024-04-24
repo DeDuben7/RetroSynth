@@ -91,7 +91,6 @@ void parse_midi_messages_task(void) {
         switch(command_type) {
           case MIDI_CMD_NOTE_OFF:
           case MIDI_CMD_NOTE_ON:
-            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
             control_leds(data[0], data[1]);
             break;
           case MIDI_CMD_PITCH_BEND:
