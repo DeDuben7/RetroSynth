@@ -32,6 +32,18 @@ extern "C" {
 
 /* Functions -------------------------------------------------------------------*/
 
+#include <stdint.h>
+
+// Function to find the maximum of two uint8_t numbers
+static uint8_t max(uint8_t a, uint8_t b) {
+    return (a > b) ? a : b;
+}
+
+// Function to find the minimum of two uint8_t numbers
+static uint8_t min(uint8_t a, uint8_t b) {
+    return (a < b) ? a : b;
+}
+
 #ifdef __cplusplus
 }
 #endif
