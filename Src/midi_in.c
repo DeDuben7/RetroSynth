@@ -19,11 +19,14 @@
  */
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "midi_in.h"
 #include "midi_test.h"
 #include "gpio.h"
-#include <stdbool.h>
+#include "ym3812_control.h"
+#include "global.h"
+
 
 #define MIDI_BUFFER_SIZE 256
 // why volatile can be used here: https://www.embedded.com/introduction-to-the-volatile-keyword/
@@ -31,6 +34,10 @@ uint8_t midi_buffer[MIDI_BUFFER_SIZE];
 uint16_t midi_buffer_head = 0;
 uint16_t midi_buffer_tail = 0;
 
+static void play_note(uint8_t note, uint8_t velocity);
+static void stop_note(uint8_t note, uint8_t velocity);
+static void change_control(uint8_t midi_channel, uint8_t value);
+static void stop_all_notes();
 
 void midi_buffer_add_data(uint8_t data) {
 	midi_buffer[midi_buffer_head++] = data; 
@@ -92,10 +99,16 @@ void parse_midi_messages_task(void) {
           case MIDI_CMD_NOTE_OFF:
           case MIDI_CMD_NOTE_ON:
             control_leds(data[0], data[1]);
+						if(data[1] == 0) {
+							stop_note(data[0],data[1]);
+						} else {
+							play_note(data[0],data[1]);
+						}
             break;
           case MIDI_CMD_PITCH_BEND:
             break;
           case MIDI_CMD_CONTROL_CHANGE:
+						change_control(data[0],data[1]);
             break;
           default:
             break;
@@ -113,4 +126,92 @@ void parse_midi_messages_task(void) {
       midi_buffer_tail = 0;
     }
   }
+}
+
+#define NO_NOTE 255
+#define MIN_NOTE 24
+#define MAX_NOTE 119
+
+uint8_t oplChannel = 0;
+uint8_t oplNotes[OPL2_NUM_CHANNELS] = {
+	NO_NOTE, NO_NOTE, NO_NOTE,
+	NO_NOTE, NO_NOTE, NO_NOTE,
+	NO_NOTE, NO_NOTE, NO_NOTE
+};
+
+/**
+ * Play a note on the next available OPL2 channel.
+ */
+static void play_note(uint8_t note, uint8_t velocity) {
+
+	// Register which note is playing on which channel.
+	oplNotes[oplChannel] = note;
+
+	// Adjust note to valid range and extract octave.
+	note = max(MIN_NOTE, min(note, MAX_NOTE));
+	uint8_t octave = 1 + (note - 24) / 12;
+	note = note % 12;
+	playNote(oplChannel, octave, note);
+
+	// Set OPL2 channel for the next note.
+	oplChannel = (oplChannel + 1) % OPL2_NUM_CHANNELS;
+}
+
+
+/**
+ * Stop playing a note by looking up its OPL2 channel and releasing the key.
+ */
+static void stop_note(uint8_t note, uint8_t velocity) {
+	for (uint8_t i = 0; i < OPL2_NUM_CHANNELS; i ++) {
+		if (oplNotes[i] == note) {
+			oplNotes[i] = NO_NOTE;
+			setKeyOn(i, false);
+		}
+	}
+}
+
+
+/**
+ * Change some of the carrier properties on control changes. Here the control's channel is used to pick the property to
+ * change. If it's more convenient to use the actual control numbers from your MIDI controller then use midiData[0] to
+ * get the control number.
+ */
+static void change_control(uint8_t midi_channel, uint8_t value) {
+	stop_all_notes();
+
+	for (uint8_t i = 0; i < OPL2_NUM_CHANNELS; i ++) {
+		switch (midi_channel) {
+			case 0:
+				setAttack(i, CARRIER, value);
+				break;
+			case 1:
+				setDecay(i, CARRIER, value);
+				break;
+			case 2:
+				setSustain(i, CARRIER, value);
+				break;
+			case 3:
+				setRelease(i, CARRIER, value);
+				break;
+			case 4:
+				setWaveForm(i, CARRIER, value);
+				break;
+			case 5:
+				setMultiplier(i, CARRIER, value);
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+/**
+ * Immediately stop playing notes on all OPL2 channels when a control is changed.
+ */
+static void stop_all_notes() {
+	for (uint8_t i = 0; i < OPL2_NUM_CHANNELS; i ++) {
+		setFNumber(i, 0);
+		setKeyOn(i, false);
+		oplNotes[i] = NO_NOTE;
+	}
 }

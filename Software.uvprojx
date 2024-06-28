@@ -459,6 +459,11 @@
               <FileType>1</FileType>
               <FilePath>.\Src\us_timer.c</FilePath>
             </File>
+            <File>
+              <FileName>ym3812_contol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\ym3812_contol.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -618,6 +623,26 @@
               <FileName>us_timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Inc\us_timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>ym3812_control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\ym3812_control.h</FilePath>
+            </File>
+            <File>
+              <FileName>instruments.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\instruments.h</FilePath>
+            </File>
+            <File>
+              <FileName>midi_drums.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\midi_drums.h</FilePath>
+            </File>
+            <File>
+              <FileName>midi_instruments.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\midi_instruments.h</FilePath>
             </File>
           </Files>
         </Group>
